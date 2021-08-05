@@ -1,27 +1,88 @@
 <!doctype html>
 <html lang="lv">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Laboratorijas datora sagatavošana attālās darbvirsmas lietošanai Windows vidē eksperimentu automatizācijai un monitoringam</title>
-  </head>
-  <body>
-    <h1>Laboratorijas datora sagatavošana attālās darbvirsmas lietošanai Windows vidē eksperimentu automatizācijai un monitoringam</h1>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
 
-    <!-- Optional JavaScript; choose one of the two! -->
+  <style>
+    body {
+      background-color: whitesmoke;
+    }
 
-    <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+    h1 {
+      color: darkred;
+    }
 
-    <!-- Option 2: Separate Popper and Bootstrap JS -->
-    <!--
+    p {
+      color: black;
+    }
+
+    body {
+      counter-reset: h2counter;
+    }
+
+    h1 {
+      counter-reset: h2counter;
+    }
+
+    h2:before {
+      content: counter(h2counter) ".\0000a0\0000a0";
+      counter-increment: h2counter;
+      counter-reset: h3counter;
+    }
+
+    h3:before {
+      content: counter(h2counter) "."counter(h3counter) ".\0000a0\0000a0";
+      counter-increment: h3counter;
+    }
+  </style>
+
+  <title>Laboratorijas datora sagatavošana attālās darbvirsmas lietošanai Windows vidē eksperimentu automatizācijai un
+    monitoringam</title>
+</head>
+
+<body>
+  <h1>Laboratorijas datora sagatavošana attālās darbvirsmas lietošanai Windows vidē eksperimentu automatizācijai un
+    monitoringam</h1>
+  <h2>Priekšnosacījumi</h2>
+  <p>Attālā darbvirsma (Remote Desktop) pieejama Windows Pro versijām.
+    Par to var pārliecināties sistēmas informācijas logā.</p>
+  <img src="system-information-windows-10-pro.png" alt="sistēmas informācija windows 10 pro">
+  <p>Mājas versijām var lietot, piemēram, kādu no VNC variantiem vai TeamViewer līdzīgiem produktiem, bet tos šeit
+    neapskatīsim.
+    Lai pieslēgtos ar attālās darbvirsmas klientu ārpus lokālā tīkla, ieteicams izmantot virtuālo privāto tīklu (VPN),
+    kas arī ir atsevišķs temats.</p>
+  <h2>BIOS iestatījums automātiskai startēšanai pēc barošanas sprieguma zuduma</h2>
+  <p>Laboratorijas datoru ieteicams pieslēgt nepārtrauktās barošanas avotam (UPS) un papildus nodrošināt tā automātisku
+    startēšanu pēc enerģijas padeves atjaunošanās.
+    Šis iestatījums dažādiem modeļiem ir atšķirīgs un varbūt vispār nav pieejams, bet varētu izskatīties apmēram šādi.
+  </p>
+  <img src="bios-power-on-after-restore-ac-loss.jpg" alt="ekrānuzņēmums BIOS iestatījumi automātiskai startēšanai"
+    width="800" height="600">
+    <p>BIOS iestatījumiem var piekļūt nospiežot pareizo taustiņu (dažādiem modeļiem atšķirīgi, Delete, F2, F10, u. tml.) tūlīt pēc datora startēšanas.</p>
+    <h2>Miega režīma atslēgšana</h2>
+    <p>To var izdarīt enerģijas iestatījumu logā.</p>
+    <img src="power-settings-sleep-off.png" alt="atslēgts miega režīms">
+    <p>Klēpjdatoriem jāatspējo miega režīma ieslēgšana pēc vāka aizvēršanas.</p>
+    <img src="disable-sleep-lid-close.png" alt="nedarīt neko, kad aizver vāku">
+  <!-- Optional JavaScript; choose one of the two! -->
+
+  <!-- Option 1: Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+    crossorigin="anonymous"></script>
+
+  <!-- Option 2: Separate Popper and Bootstrap JS -->
+  <!--
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
     -->
-  </body>
+</body>
+
 </html>
